@@ -6,10 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
 
     <StackPanel Translation="0,20,0">
-        <TextBlock Text="Hello" />
-
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Test Output" Margin="10"/>
+            <TextBlock x:Name="TestOutput"/>
+        </StackPanel>
     </StackPanel>
 </Page>

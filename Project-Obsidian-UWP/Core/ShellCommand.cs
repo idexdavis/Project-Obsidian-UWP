@@ -9,9 +9,11 @@ namespace Project_Obsidian_UWP.Core
 {
     public class ShellCommand
     {
-        public static void ExeCommand()
+        public static string ExeCommand()
         {
-            //string directory = @"C:\Users\yanyi\Documents\GitHub\"; // directory of the git repository
+            string directory = @"C:\Users\yanyi\Documents\GitHub\"; // directory of the git repository
+
+            return directory;
 
             //using (PowerShell powershell = PowerShell.Create())
             //{

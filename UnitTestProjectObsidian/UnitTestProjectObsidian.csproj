@@ -166,6 +166,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project-Obsidian-UWP\Project-Obsidian-UWP.csproj">
+      <Project>{0b4071c2-0d06-4ad2-87e1-0f7bdb62a03d}</Project>
+      <Name>Project-Obsidian-UWP</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
