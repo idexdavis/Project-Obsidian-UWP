@@ -119,6 +119,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\AccessList.cs" />
+    <Compile Include="Utilities\Picker.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -172,12 +174,6 @@
     <Folder Include="Core\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Libgit2Wrapper\Libgit2Wrapper.csproj">
-      <Project>{6db00144-e0e7-42a2-9484-ac14216be1a2}</Project>
-      <Name>Libgit2Wrapper</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
