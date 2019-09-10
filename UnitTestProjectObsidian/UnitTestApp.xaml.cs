@@ -66,7 +66,9 @@ namespace UnitTestProjectObsidian
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
-            
+
+            rootFrame.Navigate(typeof(TestPage), e.Arguments);
+
             Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.CreateDefaultUI();
 
             // Ensure the current window is active

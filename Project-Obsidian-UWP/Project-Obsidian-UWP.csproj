@@ -165,11 +165,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="LibGit2Sharp">
+      <Version>0.26.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
-    </PackageReference>
-    <PackageReference Include="System.Management.Automation.dll">
-      <Version>10.0.10586</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

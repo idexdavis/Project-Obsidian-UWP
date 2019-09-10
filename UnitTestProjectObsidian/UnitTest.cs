@@ -1,7 +1,6 @@
 ﻿
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Project_Obsidian_UWP.Core;
 
 namespace UnitTestProjectObsidian
 {
@@ -11,7 +10,7 @@ namespace UnitTestProjectObsidian
         [TestMethod]
         public void TestMethod1()
         {
-            ShellCommand.ExeCommand();
+            Console.WriteLine("Hello, world");
         }
     }
 }
