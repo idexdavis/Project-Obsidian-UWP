@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+﻿using LibGit2Sharp;
+using System.Runtime.InteropServices;
 
-namespace Project_Obsidian_UWP.Core
+namespace Libgit2Wrapper
 {
     public class ShellCommand
     {
         public static string ExeCommand()
         {
             string directory = @"C:\Users\yanyi\Documents\GitHub\"; // directory of the git repository
+
+            Repository.Clone("https://github.com/totoroyyb/About-SwiftUI.git", @"C:\Users\yanyi\Downloads");
 
             return directory;
 
