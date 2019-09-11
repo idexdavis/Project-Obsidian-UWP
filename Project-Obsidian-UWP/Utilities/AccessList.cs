@@ -7,11 +7,15 @@ namespace Project_Obsidian_UWP.Utilities
     public class AccessList
     {
         // Add Folder or File to the Most Recent Used List and persist it.
-        public static void AddMRUList(IStorageItem item, string metaData = "New Storage Item")
+        public static void AddMRUList(IStorageItem item, string metaData = "New Storage Item", string persistenceId = null)
         {
             var mru = Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList;
             string mruToken = mru.Add(item, metaData);
             
+            if (persistenceId != null)
+            {
+                Persistent.SaveSettings(persistenceId, mruToken);
+            }
         }
 
         public async static Task<IStorageItem> GetFromMRUList(string token)
@@ -25,7 +29,8 @@ namespace Project_Obsidian_UWP.Utilities
             return null;
         }
 
-        public static void AddFutureList(Windows.Storage.IStorageFile item, string metaData = "New Storage Item")
+        #region Unfinished API
+        public static void AddFutureList(IStorageFile item, string metaData = "New Storage Item")
         {
             var futureList = Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList;
             string futureToken = futureList.Add(item, metaData);
@@ -41,5 +46,6 @@ namespace Project_Obsidian_UWP.Utilities
             }
             return null;
         }
+        #endregion
     }
 }

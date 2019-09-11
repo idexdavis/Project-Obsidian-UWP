@@ -9,8 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TreeView x:Name="WorkspaceTreeView">
-
-        </TreeView>
+        <Button x:Name="TestButton" Content="Pick Folder" Click="TestButton_Click"/>
     </Grid>
 </Page>

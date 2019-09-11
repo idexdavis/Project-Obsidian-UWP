@@ -4,33 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Pickers;
+using Windows.Storage;
 
 namespace Project_Obsidian_UWP.Utilities
 {
     // This class is created for facilitating calling file picker.
     public class Picker
     {
-        public async static void PickFolder(string metaData = null,
-                                            PickerLocationId pickerLocationId = PickerLocationId.Desktop)
+        public async static Task<IStorageFolder> PickFolder(PickerLocationId pickerLocationId = PickerLocationId.Desktop)
         {
             var folderPicker = new FolderPicker();
             folderPicker.SuggestedStartLocation = pickerLocationId;
             folderPicker.FileTypeFilter.Add("*");
 
-            Windows.Storage.StorageFolder folder = await folderPicker.PickSingleFolderAsync();
+            StorageFolder folder = await folderPicker.PickSingleFolderAsync();
             if (folder != null)
             {
                 // Application now has read/write access to all contents in the picked folder
                 // (including other sub-folder contents)
-                AccessList.AddMRUList(folder, metaData);
+                return folder;
             }
-            else
-            {
-                Console.WriteLine("Operation Cancelled");
-            }
+
+            Console.WriteLine("Operation Cancelled");
+            return null;
         }
 
-        public async static void PickFiles(List<string> fileTypes,
+        #region Unfinished API
+        public async static Task<IStorageFile> PickFiles(List<string> fileTypes,
                                            string metaData = "New Storage Item",
                                            PickerViewMode pickerViewMode = PickerViewMode.Thumbnail,
                                            PickerLocationId pickerLocationId = PickerLocationId.PicturesLibrary)
@@ -48,12 +48,12 @@ namespace Project_Obsidian_UWP.Utilities
             if (file != null)
             {
                 // Application now has read/write access to the picked file
-                
+                return file;
             }
-            else
-            {
-                Console.WriteLine("Operation cancelled.");
-            }
+
+            Console.WriteLine("Operation cancelled.");
+            return null;
         }
+        #endregion
     }
 }
