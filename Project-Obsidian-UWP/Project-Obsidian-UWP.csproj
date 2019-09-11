@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\AccessList.cs" />
+    <Compile Include="Utilities\Persistent.cs" />
     <Compile Include="Utilities\Picker.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
