@@ -18,6 +18,7 @@ namespace Project_Obsidian_UWP.Utilities
             }
         }
 
+        // Get item from MRU list
         public async static Task<IStorageItem> GetFromMRUList(string token)
         {
             var mru = Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList;

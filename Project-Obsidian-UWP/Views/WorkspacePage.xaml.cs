@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Project_Obsidian_UWP.Utilities;
+using Project_Obsidian_UWP.Core;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,10 +28,9 @@ namespace Project_Obsidian_UWP.Views
             this.InitializeComponent();
         }
 
-        private async void TestButton_Click(object sender, RoutedEventArgs e)
+        private void TestButton_Click(object sender, RoutedEventArgs e)
         {
-            Windows.Storage.IStorageFolder pickedFolder = await Picker.PickFolder();
-            Console.WriteLine("Hello");
+            DefineLocation.LocateAndCheckRepo();
         }
     }
 }

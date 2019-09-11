@@ -11,7 +11,7 @@ namespace Project_Obsidian_UWP.Utilities
     // This class is created for facilitating calling file picker.
     public class Picker
     {
-        public async static Task<IStorageFolder> PickFolder(PickerLocationId pickerLocationId = PickerLocationId.Desktop)
+        public async static Task<StorageFolder> PickFolder(PickerLocationId pickerLocationId = PickerLocationId.Desktop)
         {
             var folderPicker = new FolderPicker();
             folderPicker.SuggestedStartLocation = pickerLocationId;
@@ -30,7 +30,7 @@ namespace Project_Obsidian_UWP.Utilities
         }
 
         #region Unfinished API
-        public async static Task<IStorageFile> PickFiles(List<string> fileTypes,
+        public async static Task<StorageFile> PickFiles(List<string> fileTypes,
                                            string metaData = "New Storage Item",
                                            PickerViewMode pickerViewMode = PickerViewMode.Thumbnail,
                                            PickerLocationId pickerLocationId = PickerLocationId.PicturesLibrary)

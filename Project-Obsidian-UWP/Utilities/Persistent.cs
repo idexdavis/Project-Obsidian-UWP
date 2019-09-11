@@ -7,6 +7,7 @@ using Windows.Storage;
 
 namespace Project_Obsidian_UWP.Utilities
 {
+    // This class is created for persistence. Save and load user data from UWP container
     public class Persistent
     {
         public static void SaveSettings(string id, string content)
