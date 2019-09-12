@@ -9,20 +9,21 @@ namespace Project_Obsidian_UWP.Core
     public class DefineLocation
     {
         // Locate the blog folder and check whether it is a valid location.
-        public async static Task LocateAndCheckRepo()
+        public async static Task<bool> LocateAndCheckRepo()
         {
             StorageFolder pickedFolder = await Picker.PickFolder();
             
             if (pickedFolder != null)
             {
-                await CheckConfigFile(pickedFolder);
+                return await CheckConfigFile(pickedFolder);
             }
+            return false;
         }
 
         // Verify whether user locate the right location of blog folder.
         // Used Salaros.ConfigParser to parse config file.
         // https://github.com/salaros/config-parser for docs.
-        private static async Task CheckConfigFile(StorageFolder pickedFolder)
+        private static async Task<bool> CheckConfigFile(StorageFolder pickedFolder)
         {
             try
             {
@@ -42,7 +43,10 @@ namespace Project_Obsidian_UWP.Core
             catch (Exception ex)
             {
                 Console.WriteLine($"Cannot locate your blog folder. Error: { ex.Message }");
+                return false;
             }
+
+            return true;
         }
     }
 }
