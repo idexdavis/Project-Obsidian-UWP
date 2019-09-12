@@ -30,7 +30,7 @@ namespace Project_Obsidian_UWP.Views
 
         private async void TestButton_Click(object sender, RoutedEventArgs e)
         {
-            await DefineLocation.LocateAndCheckRepo();
+            bool isValid = await DefineLocation.LocateAndCheckRepo();
         }
     }
 }
