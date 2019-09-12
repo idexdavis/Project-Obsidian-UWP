@@ -57,5 +57,11 @@ namespace Project_Obsidian_UWP.Views
 
             MainFrame.NavigateToType(pageType, null, navOptions);
         }
+
+        // Initially navigate the frame to the workspace page.
+        private void MainNaviView_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(WorkspacePage));
+        }
     }
 }

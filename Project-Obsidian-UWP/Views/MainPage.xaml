@@ -12,12 +12,11 @@
         <StackPanel>
             <NavigationView x:Name="MainNaviView" PaneDisplayMode="Top"
                         ItemInvoked="MainNaviView_ItemInvoked"
+                        SelectedItem="{x:Bind WorkspaceNaviItem}"
+                        Loaded="MainNaviView_Loaded"
                         IsBackButtonVisible="Collapsed">
                 <NavigationView.MenuItems>
-                    <NavigationViewItem Content="Workspace" Tag="Workspace"/>
-                    <!--<NavigationViewItem Content="Menu Item2" Tag="SamplePage2" />
-                <NavigationViewItem Content="Menu Item3" Tag="SamplePage3" />
-                <NavigationViewItem Content="Menu Item4" Tag="SamplePage4" />-->
+                    <NavigationViewItem x:Name="WorkspaceNaviItem" Content="Workspace" Tag="Workspace"/>
                 </NavigationView.MenuItems>
             </NavigationView>
 
