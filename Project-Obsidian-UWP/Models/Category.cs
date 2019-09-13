@@ -1,4 +1,5 @@
-﻿using static Project_Obsidian_UWP.Utilities.Enumerations;
+﻿using System.Collections.ObjectModel;
+using static Project_Obsidian_UWP.Utilities.Enumerations;
 using static Project_Obsidian_UWP.Utilities.Utility;
 
 namespace Project_Obsidian_UWP.Models
@@ -15,6 +16,7 @@ namespace Project_Obsidian_UWP.Models
         public string slug { get; set; }
         public string description { get; set; }
         public string filePath { get; set; }
+        public PostsManager posts { get; set; }
 
         public Category(string fileFullName, string title, string slug,
                         string description, string filePath,
