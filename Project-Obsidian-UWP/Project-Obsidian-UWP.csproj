@@ -120,10 +120,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\DefineLocation.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Utilities\AccessList.cs" />
     <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\Enumerations.cs" />
     <Compile Include="Utilities\Persistent.cs" />
     <Compile Include="Utilities\Picker.cs" />
+    <Compile Include="Utilities\Utility.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="LunarParser">
+      <Version>1.1.5</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
@@ -177,7 +183,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
