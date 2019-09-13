@@ -10,13 +10,19 @@ namespace Project_Obsidian_UWP.Utilities
     {
         public enum CategoryLayout
         {
-            list
+            List
         }
 
         public enum BlogLayout
         {
-            list,
-            blog,
+            List,
+            Blog,
+        }
+
+        public enum PageLayout
+        {
+            Page,
+            NotFound,
         }
     }
 }

@@ -14,6 +14,15 @@ namespace Project_Obsidian_UWP.Utilities
         public const string configVersion = @"1.0";
         #endregion
 
+        #region Constants for file or folder path
+        public const string categoriesPath = @"_featured_categories";
+        public const string postsPath = @"posts";
+        public const string assetsPath = @"assets";
+        public const string configFilePath = @"_config.yml";
+        public const string notFoundPagePath = @"404.html";
+        public const string aboutPagePath = @"about.md";
+        #endregion
+
         public const bool allowRefreshByMenuItem = false;
     }
 }

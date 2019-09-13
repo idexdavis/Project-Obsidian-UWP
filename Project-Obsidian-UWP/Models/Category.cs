@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using static Project_Obsidian_UWP.Utilities.Enumerations;
 using static Project_Obsidian_UWP.Utilities.Utility;
 
@@ -20,7 +21,7 @@ namespace Project_Obsidian_UWP.Models
 
         public Category(string fileFullName, string title, string slug,
                         string description, string filePath,
-                        CategoryLayout layout = CategoryLayout.list)
+                        CategoryLayout layout = CategoryLayout.List)
         {
             var fileNameAndExt = SplitFileName(fileFullName);
             this.fileName = fileNameAndExt.Item1; this.fileExt = fileNameAndExt.Item2;
@@ -29,6 +30,34 @@ namespace Project_Obsidian_UWP.Models
             this.slug = slug;
             this.description = description;
             this.filePath = filePath;
+        }
+    }
+
+    public class CategoryManager
+    {
+        private ObservableCollection<Category> _categories = new ObservableCollection<Category>();
+
+        public void AddCategory(Category category)
+        {
+            _categories.Add(category);
+        }
+
+        public void AddCategories(List<Category> categories)
+        {
+            foreach (Category category in categories)
+            {
+                _categories.Add(category);
+            }
+        }
+
+        public ObservableCollection<Category> GetCategories()
+        {
+            return _categories;
+        }
+
+        public void MoveCategory(int oldIndex, int newIndex)
+        {
+            _categories.Move(oldIndex, newIndex);
         }
     }
 }
