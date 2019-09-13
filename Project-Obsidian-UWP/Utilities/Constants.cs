@@ -23,6 +23,14 @@ namespace Project_Obsidian_UWP.Utilities
         public const string aboutPagePath = @"about.md";
         #endregion
 
+        #region Several Keywords
+        public static string layoutKeyword = @"layout";
+        public static string titleKeyword = @"title";
+        public static string descriptionKeyword = @"description";
+        public static string slugKeyword = @"slug";
+        public static string permalinkKeyword = @"permalink";
+        #endregion
+
         public const bool allowRefreshByMenuItem = false;
     }
 }
