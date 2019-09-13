@@ -17,10 +17,12 @@ namespace Project_Obsidian_UWP.Models
         public string slug { get; set; }
         public string description { get; set; }
         public string filePath { get; set; }
+        public string content { get; set; }
         public PostsManager posts { get; set; }
 
         public Category(string fileFullName, string title, string slug,
                         string description, string filePath,
+                        string content = "",
                         CategoryLayout layout = CategoryLayout.List)
         {
             var fileNameAndExt = SplitFileName(fileFullName);
@@ -30,6 +32,7 @@ namespace Project_Obsidian_UWP.Models
             this.slug = slug;
             this.description = description;
             this.filePath = filePath;
+            this.content = content;
         }
     }
 

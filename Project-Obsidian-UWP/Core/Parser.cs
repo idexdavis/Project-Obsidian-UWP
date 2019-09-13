@@ -12,17 +12,22 @@ namespace Project_Obsidian_UWP.Core
 {
     public class Parser
     {
-        public async static Task<DataNode> ParseYAMLFront(StorageFile file)
+        public static DataNode ParseYAMLFront(string yaml)
+        {
+            return YAMLReader.ReadFromString(yaml);
+        }
+
+        public async static Task<DataNode> ParseYAMLFile(StorageFile file)
         {
             string content = await FileIO.ReadTextAsync(file);
             return YAMLReader.ReadFromString(content);
-        } 
+        }
 
         // Try not to use this API for the concern of efficiency
         // if you need to call this function oftenly
-        public async static Task<string> GetStringFromYAML(StorageFile file, string key)
-        {
-            return (await ParseYAMLFront(file)).GetString(key);
-        }
+        //public async static Task<string> GetStringFromYAML(StorageFile file, string key)
+        //{
+        //    return ParseYAMLFront(file).GetString(key);
+        //}
     }
 }
