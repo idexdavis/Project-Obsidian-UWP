@@ -122,6 +122,7 @@
     <Compile Include="Core\Core.cs" />
     <Compile Include="Core\DefineLocation.cs" />
     <Compile Include="Core\Loader.cs" />
+    <Compile Include="Core\Parser.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\Post.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_Obsidian_UWP.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,18 @@ namespace Project_Obsidian_UWP.Core
     {
         public async static Task ReadAllCategories(StorageFolder rootFolder)
         {
-            StorageFolder cateFolder = await rootFolder.GetFolderAsync("_featured_categories");
+            StorageFolder cateFolder = await rootFolder.GetFolderAsync(Constants.categoriesPath);
+            if (cateFolder != null)
+            {
+                IReadOnlyList<StorageFile> storageFiles = await cateFolder.GetFilesAsync();
+
+                if (storageFiles == null) return;
+
+                foreach (StorageFile file in storageFiles)
+                {
+
+                }
+            }
         }
     }
 }
