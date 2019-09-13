@@ -44,7 +44,7 @@ namespace Project_Obsidian_UWP.Utilities
                 picker.FileTypeFilter.Add(type);
             }
 
-            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+            StorageFile file = await picker.PickSingleFileAsync();
             if (file != null)
             {
                 // Application now has read/write access to the picked file

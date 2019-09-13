@@ -16,7 +16,7 @@ namespace Project_Obsidian_UWP.Utilities
             localSettings.Values[id] = content;
         }
 
-        public static Object RetrieveSettings(string id)
+        public static object RetrieveSettings(string id)
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             return localSettings.Values[id];
