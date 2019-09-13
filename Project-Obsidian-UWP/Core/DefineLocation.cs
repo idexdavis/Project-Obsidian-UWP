@@ -32,7 +32,7 @@ namespace Project_Obsidian_UWP.Core
                 var parsedConfig = new ConfigParser(configText);
 
                 bool isValid = parsedConfig["remote"]["url"] == Constants.configUrl &&
-                               parsedConfig["info"]["version"] == Constants.configOrg;
+                               parsedConfig["info"]["org"] == Constants.configOrg;
 
                 if (!isValid)
                 {
