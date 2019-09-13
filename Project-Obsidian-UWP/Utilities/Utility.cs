@@ -8,6 +8,7 @@ namespace Project_Obsidian_UWP.Utilities
 {
     public class Utility
     {
+        // Split file name and file extension based on a full file name.
         public static (string, string) SplitFileName(string fileFullName)
         {
             if (!string.IsNullOrEmpty(fileFullName))

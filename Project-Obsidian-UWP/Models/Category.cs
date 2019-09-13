@@ -3,6 +3,9 @@ using static Project_Obsidian_UWP.Utilities.Utility;
 
 namespace Project_Obsidian_UWP.Models
 {
+    // This class is made for storing category info
+    // by scanning category files located in folder
+    // "/_featured_categories"
     public class Category
     {
         public string fileName { get; set; }
