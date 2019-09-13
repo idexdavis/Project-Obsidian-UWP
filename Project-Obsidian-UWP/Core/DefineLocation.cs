@@ -12,7 +12,10 @@ namespace Project_Obsidian_UWP.Core
         public async static Task<bool> LocateAndCheckRepo()
         {
             StorageFolder pickedFolder = await Picker.PickFolder();
-            
+
+            await Loader.ReadAllCategories(pickedFolder);
+
+
             if (pickedFolder != null)
             {
                 return await CheckConfigFile(pickedFolder);
