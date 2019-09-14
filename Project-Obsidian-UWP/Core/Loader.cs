@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
+using YamlDotNet.RepresentationModel;
 
 namespace Project_Obsidian_UWP.Core
 {
@@ -21,24 +22,26 @@ namespace Project_Obsidian_UWP.Core
 
                 foreach (StorageFile file in storageFiles)
                 {
-                    var splitedContent = await Utility.SplitYAMLFrontMatter(file);
-                    DataNode root = Parser.ParseYAMLFront(splitedContent.Item1);
+                    //var splitedContent = await Utility.SplitYAMLFrontMatter(file);
+                    string content = await FileIO.ReadTextAsync(file);
+                    YamlMappingNode root = Parser.ParseYAMLFront(content);
 
                     isLayoutValid(file, root);
 
                     Category category = new Category(file.Name,
-                                                     root.GetString(Constants.titleKeyword),
-                                                     root.GetString(Constants.slugKeyword),
-                                                     root.GetString(Constants.descriptionKeyword),
-                                                     file.Path, content: splitedContent.Item2);
+                                                     (string)root.Children[new YamlScalarNode(Constants.titleKeyword)],
+                                                     (string)root.Children[new YamlScalarNode(Constants.slugKeyword)],
+                                                     (string)root.Children[new YamlScalarNode(Constants.descriptionKeyword)],
+                                                     file.Path);
                     Core.categoryList.AddCategory(category);
                 }
             }
         }
 
-        private static bool isLayoutValid(StorageFile file, DataNode root)
+        private static bool isLayoutValid(StorageFile file, YamlMappingNode root)
         {
-            if (root.GetString(Constants.layoutKeyword) != Enumerations.CategoryLayout.List.ToString().ToLower())
+            if ((string)root.Children[new YamlScalarNode(Constants.layoutKeyword)] != 
+                Enumerations.CategoryLayout.List.ToString().ToLower())
             {
                 Console.WriteLine($"Category { file.Name } layout is incorrect!");
                 return false;
