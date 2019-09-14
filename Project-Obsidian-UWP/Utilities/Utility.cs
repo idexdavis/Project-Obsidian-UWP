@@ -42,7 +42,7 @@ namespace Project_Obsidian_UWP.Utilities
                 index++;
             }
 
-            return (string.Join("\r\n", lines.GetRange(1, index - 1)), 
+            return (string.Join("\r\n", lines.GetRange(0, index - 1)), 
                     string.Join("\r\n", lines.GetRange(index + 1, lines.Count() - index - 1)));
         }
     }

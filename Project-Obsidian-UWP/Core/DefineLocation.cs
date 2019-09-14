@@ -3,6 +3,8 @@ using System;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Salaros.Configuration;
+using System.Collections.ObjectModel;
+using Project_Obsidian_UWP.Models;
 
 namespace Project_Obsidian_UWP.Core
 {
@@ -15,6 +17,7 @@ namespace Project_Obsidian_UWP.Core
 
             await Loader.ReadAllCategories(pickedFolder);
 
+            ObservableCollection<Category> list = Core.categoryList.GetCategories();
 
             if (pickedFolder != null)
             {

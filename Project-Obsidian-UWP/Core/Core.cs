@@ -9,6 +9,6 @@ namespace Project_Obsidian_UWP.Core
 {
     public class Core
     {
-        public static CategoryManager categoryList { get; set; }
+        public static CategoryManager categoryList = new CategoryManager();
     }
 }
