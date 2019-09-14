@@ -23,14 +23,14 @@ namespace Project_Obsidian_UWP.Core
                 {
                     //var splitedContent = await Utility.SplitYAMLFrontMatter(file);
                     string content = await FileIO.ReadTextAsync(file);
-                    (YamlMappingNode, string) roots = Parser.ParseYamlFront(content);
+                    YamlMappingNode root = Parser.ParseYamlFront(content);
 
-                    isLayoutValid(file, roots.Item1);
+                    isLayoutValid(file, root);
 
                     Category category = new Category(file.Name,
-                                                     (string)roots.Item1.Children[new YamlScalarNode(Constants.titleKeyword)],
-                                                     (string)roots.Item1.Children[new YamlScalarNode(Constants.slugKeyword)],
-                                                     (string)roots.Item1.Children[new YamlScalarNode(Constants.descriptionKeyword)],
+                                                     (string)root.Children[new YamlScalarNode(Constants.titleKeyword)],
+                                                     (string)root.Children[new YamlScalarNode(Constants.slugKeyword)],
+                                                     (string)root.Children[new YamlScalarNode(Constants.descriptionKeyword)],
                                                      file.Path);
                     Core.categoryList.AddCategory(category);
                 }
