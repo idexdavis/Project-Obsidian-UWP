@@ -1,5 +1,4 @@
-﻿using LunarLabs.Parser;
-using Project_Obsidian_UWP.Models;
+﻿using Project_Obsidian_UWP.Models;
 using Project_Obsidian_UWP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -24,14 +23,14 @@ namespace Project_Obsidian_UWP.Core
                 {
                     //var splitedContent = await Utility.SplitYAMLFrontMatter(file);
                     string content = await FileIO.ReadTextAsync(file);
-                    YamlMappingNode root = Parser.ParseYAMLFront(content);
+                    (YamlMappingNode, string) roots = Parser.ParseYamlFront(content);
 
-                    isLayoutValid(file, root);
+                    isLayoutValid(file, roots.Item1);
 
                     Category category = new Category(file.Name,
-                                                     (string)root.Children[new YamlScalarNode(Constants.titleKeyword)],
-                                                     (string)root.Children[new YamlScalarNode(Constants.slugKeyword)],
-                                                     (string)root.Children[new YamlScalarNode(Constants.descriptionKeyword)],
+                                                     (string)roots.Item1.Children[new YamlScalarNode(Constants.titleKeyword)],
+                                                     (string)roots.Item1.Children[new YamlScalarNode(Constants.slugKeyword)],
+                                                     (string)roots.Item1.Children[new YamlScalarNode(Constants.descriptionKeyword)],
                                                      file.Path);
                     Core.categoryList.AddCategory(category);
                 }
