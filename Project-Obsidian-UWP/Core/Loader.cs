@@ -23,23 +23,23 @@ namespace Project_Obsidian_UWP.Core
                 {
                     //var splitedContent = await Utility.SplitYAMLFrontMatter(file);
                     string content = await FileIO.ReadTextAsync(file);
-                    YamlMappingNode root = Parser.ParseYamlFront(content);
+                    IDictionary<YamlNode, YamlNode> children = Parser.ParseYamlFront(content).Children;
 
-                    isLayoutValid(file, root);
+                    isLayoutValid(file, children);
 
                     Category category = new Category(file.Name,
-                                                     (string)root.Children[new YamlScalarNode(Constants.titleKeyword)],
-                                                     (string)root.Children[new YamlScalarNode(Constants.slugKeyword)],
-                                                     (string)root.Children[new YamlScalarNode(Constants.descriptionKeyword)],
+                                                     (string)children[new YamlScalarNode(Constants.titleKeyword)],
+                                                     (string)children[new YamlScalarNode(Constants.slugKeyword)],
+                                                     (string)children[new YamlScalarNode(Constants.descriptionKeyword)],
                                                      file.Path);
                     Core.categoryList.AddCategory(category);
                 }
             }
         }
 
-        private static bool isLayoutValid(StorageFile file, YamlMappingNode root)
+        private static bool isLayoutValid(StorageFile file, IDictionary<YamlNode, YamlNode> children)
         {
-            if ((string)root.Children[new YamlScalarNode(Constants.layoutKeyword)] != 
+            if ((string)children[new YamlScalarNode(Constants.layoutKeyword)] != 
                 Enumerations.CategoryLayout.List.ToString().ToLower())
             {
                 Console.WriteLine($"Category { file.Name } layout is incorrect!");
