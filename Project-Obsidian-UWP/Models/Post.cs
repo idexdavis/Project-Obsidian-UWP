@@ -29,7 +29,7 @@ namespace Project_Obsidian_UWP.Models
                 try
                 {
                     publishDate = DateTime.ParseExact(value.Substring(0, 10), Constants.dateFormat, null);
-                    fileName = value.Substring(10);
+                    fileName = value.Substring(11);
                 }
                 catch (Exception ex)
                 {
@@ -43,14 +43,13 @@ namespace Project_Obsidian_UWP.Models
         }
 
         public Post(string fileName, string fileExt,
-                    string title, DateTime publishDate,
+                    string title,
                     string description, string filePath,
                     Category category,
                     string content = "")
         {
-            this.fileName = fileName; this.fileExt = fileExt;
+            this.displayName = fileName; this.fileExt = fileExt;
             this.title = title;
-            this.publishDate = publishDate;
             this.description = description;
             this.filePath = filePath;
             this.category = category;

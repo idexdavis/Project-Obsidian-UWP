@@ -10,6 +10,5 @@ namespace Project_Obsidian_UWP.Core
     public class Core
     {
         public static CategoryManager categoryManager = new CategoryManager();
-        public static PostsManager postManager = new PostsManager();
     }
 }

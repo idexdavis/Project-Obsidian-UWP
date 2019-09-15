@@ -46,16 +46,23 @@ namespace Project_Obsidian_UWP.Core
                 try
                 {
                     StorageFolder singlePostsFolder = await postsFolder.GetFolderAsync($"{ category.slug }\\{ Constants.subpostPath }");
-                    IReadOnlyList<StorageFile> posts = await singlePostsFolder.GetFilesAsync();
-                    foreach (StorageFile post in posts)
+                    IReadOnlyList<StorageFile> postFiles = await singlePostsFolder.GetFilesAsync();
+                    foreach (StorageFile postFile in postFiles)
                     {
-                        var splitedContent = await Utility.SplitYamlFrontMatter(post);
+                        var splitedContent = await Utility.SplitYamlFrontMatter(postFile);
                         IDictionary<YamlNode, YamlNode> children = Parser.ParseYamlFront(splitedContent.Item1).Children;
 
                         string title = (string)children[new YamlScalarNode(Constants.titleKeyword)];
                         string description = (string)children[new YamlScalarNode(Constants.descriptionKeyword)];
 
+                        Post post = new Post(postFile.DisplayName, 
+                                             postFile.FileType, 
+                                             title, description, 
+                                             postFile.Path ,
+                                             category,
+                                             splitedContent.Item2);
 
+                        category.posts.AddPost(post);
                     }
                 }
                 catch (Exception ex)
