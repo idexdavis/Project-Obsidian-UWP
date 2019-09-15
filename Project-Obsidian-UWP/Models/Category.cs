@@ -10,6 +10,10 @@ namespace Project_Obsidian_UWP.Models
     // "/_featured_categories"
     public class Category
     {
+        public string fullFileName
+        {
+            get { return fileName + fileExt; }
+        }
         public string fileName { get; set; }
         public string fileExt { get; set; }
         public CategoryLayout layout { get; set; }
@@ -21,13 +25,12 @@ namespace Project_Obsidian_UWP.Models
 
         public PostsManager posts = new PostsManager();
 
-        public Category(string fileFullName, string title, string slug,
+        public Category(string fileName, string fileExt, string title, string slug,
                         string description, string filePath,
                         string content = "",
                         CategoryLayout layout = CategoryLayout.List)
         {
-            var fileNameAndExt = SplitFileName(fileFullName);
-            this.fileName = fileNameAndExt.Item1; this.fileExt = fileNameAndExt.Item2;
+            this.fileName = fileName; this.fileExt = fileExt;
             this.layout = layout;
             this.title = title;
             this.slug = slug;

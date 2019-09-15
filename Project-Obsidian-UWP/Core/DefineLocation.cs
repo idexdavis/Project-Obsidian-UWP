@@ -15,10 +15,6 @@ namespace Project_Obsidian_UWP.Core
         {
             StorageFolder pickedFolder = await Picker.PickFolder();
 
-            await Loader.ReadAllCategories(pickedFolder);
-
-            ObservableCollection<Category> list = Core.categoryList.GetCategories();
-
             if (pickedFolder != null)
             {
                 return await CheckConfigFile(pickedFolder);

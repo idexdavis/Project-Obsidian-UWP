@@ -21,17 +21,16 @@ namespace Project_Obsidian_UWP.Core
 
                 foreach (StorageFile file in storageFiles)
                 {
-                    //var splitedContent = await Utility.SplitYAMLFrontMatter(file);
-                    string content = await FileIO.ReadTextAsync(file);
-                    IDictionary<YamlNode, YamlNode> children = Parser.ParseYamlFront(content).Children;
+                    var splitedContent = await Utility.SplitYamlFrontMatter(file);
+                    IDictionary<YamlNode, YamlNode> children = Parser.ParseYamlFront(splitedContent.Item1).Children;
 
                     isLayoutValid(file, children);
 
-                    Category category = new Category(file.Name,
+                    Category category = new Category(file.DisplayName, file.FileType,
                                                      (string)children[new YamlScalarNode(Constants.titleKeyword)],
                                                      (string)children[new YamlScalarNode(Constants.slugKeyword)],
                                                      (string)children[new YamlScalarNode(Constants.descriptionKeyword)],
-                                                     file.Path);
+                                                     file.Path, content: splitedContent.Item2);
                     Core.categoryList.AddCategory(category);
                 }
             }

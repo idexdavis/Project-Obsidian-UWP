@@ -25,7 +25,7 @@ namespace Project_Obsidian_UWP.Utilities
 
         // This API is not ready for production use.
         // TODO: Refine the algorithm.
-        public async static Task<(string, string)> SplitYAMLFrontMatter(StorageFile file)
+        public async static Task<(string, string)> SplitYamlFrontMatter(StorageFile file)
         {
             List<string> lines = (await FileIO.ReadLinesAsync(file)).ToList();
 
@@ -42,7 +42,7 @@ namespace Project_Obsidian_UWP.Utilities
                 index++;
             }
 
-            return (string.Join("\r\n", lines.GetRange(0, index - 1)), 
+            return (string.Join("\r\n", lines.GetRange(0, index + 1)), 
                     string.Join("\r\n", lines.GetRange(index + 1, lines.Count() - index - 1)));
         }
     }
