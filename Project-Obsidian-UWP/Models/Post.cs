@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Project_Obsidian_UWP.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using static Project_Obsidian_UWP.Utilities.Enumerations;
 
 namespace Project_Obsidian_UWP.Models
 {
@@ -9,25 +11,50 @@ namespace Project_Obsidian_UWP.Models
         public Category category { get; set; }
         public DateTime createDate { get; set; }
         public DateTime publishDate { get; set; }
+        public PostLayout layout { get { return PostLayout.Post;  } }
         public string fileName { get; set; }
-        public string displayName { get; set; }
         public string fileExt { get; set; }
-        public string fullFileName
-        {
-            get { return $"{ publishDate }-{ fileName }{ fileExt }"; }
-        }
         public string title { get; set; }
         public string description { get; set; }
         public string filePath { get; set; }
         public string content { get; set; }
+        public string displayName
+        {
+            get
+            {
+                return $"{ publishDate.ToString(Constants.dateFormat) }-{ fileName }";
+            }
+            set
+            {
+                try
+                {
+                    publishDate = DateTime.ParseExact(value.Substring(0, 10), Constants.dateFormat, null);
+                    fileName = value.Substring(10);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Fail to parse post publish date. Detail: { ex.Message }");
+                }
+            }
+        }
+        public string fullFileName
+        {
+            get { return $"{ displayName }{ fileExt }"; }
+        }
 
         public Post(string fileName, string fileExt,
-                    string title, string publishDate,
+                    string title, DateTime publishDate,
                     string description, string filePath,
                     Category category,
                     string content = "")
         {
-
+            this.fileName = fileName; this.fileExt = fileExt;
+            this.title = title;
+            this.publishDate = publishDate;
+            this.description = description;
+            this.filePath = filePath;
+            this.category = category;
+            this.content = content;
         }
     }
 

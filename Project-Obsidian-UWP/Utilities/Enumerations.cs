@@ -24,5 +24,10 @@ namespace Project_Obsidian_UWP.Utilities
             Page,
             NotFound,
         }
+
+        public enum PostLayout
+        {
+            Post
+        }
     }
 }

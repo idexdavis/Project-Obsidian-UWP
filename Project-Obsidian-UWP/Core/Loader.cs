@@ -32,7 +32,7 @@ namespace Project_Obsidian_UWP.Core
                                                      (string)children[new YamlScalarNode(Constants.slugKeyword)],
                                                      (string)children[new YamlScalarNode(Constants.descriptionKeyword)],
                                                      file.Path, content: splitedContent.Item2);
-                    Core.categoryList.AddCategoryCollection(category);
+                    Core.categoryManager.AddCategoryCollection(category);
                 }
             }
         }
@@ -41,10 +41,27 @@ namespace Project_Obsidian_UWP.Core
         {
             StorageFolder postsFolder = await rootFolder.GetFolderAsync(Constants.postsPath);
 
-            foreach (Category category in Core.categoryList.GetCategoriesCollection())
+            foreach (Category category in Core.categoryManager.GetCategoriesCollection())
             {
-                StorageFolder categoryFolder = await postsFolder.GetFolderAsync(category.slug);
+                try
+                {
+                    StorageFolder singlePostsFolder = await postsFolder.GetFolderAsync($"{ category.slug }\\{ Constants.subpostPath }");
+                    IReadOnlyList<StorageFile> posts = await singlePostsFolder.GetFilesAsync();
+                    foreach (StorageFile post in posts)
+                    {
+                        var splitedContent = await Utility.SplitYamlFrontMatter(post);
+                        IDictionary<YamlNode, YamlNode> children = Parser.ParseYamlFront(splitedContent.Item1).Children;
 
+                        string title = (string)children[new YamlScalarNode(Constants.titleKeyword)];
+                        string description = (string)children[new YamlScalarNode(Constants.descriptionKeyword)];
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Category doesn't match up posts or cannot locate _posts folder. Detail: { ex.Message }");
+                }
             }
         }
 

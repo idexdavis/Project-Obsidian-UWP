@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Project_Obsidian_UWP.Utilities
+﻿namespace Project_Obsidian_UWP.Utilities
 {
     public class Constants
     {
@@ -17,7 +11,9 @@ namespace Project_Obsidian_UWP.Utilities
         #region Constants for file or folder path
         public const string categoriesPath = @"_featured_categories";
         public const string postsPath = @"posts";
+        public const string subpostPath = @"_posts";
         public const string assetsPath = @"assets";
+        public const string subassetsPath = @"img";
         public const string configFilePath = @"_config.yml";
         public const string notFoundPagePath = @"404.html";
         public const string aboutPagePath = @"about.md";
@@ -30,6 +26,8 @@ namespace Project_Obsidian_UWP.Utilities
         public static string slugKeyword = @"slug";
         public static string permalinkKeyword = @"permalink";
         #endregion
+
+        public static string dateFormat = @"yyyy-MM-dd";
 
         public const bool allowRefreshByMenuItem = false;
     }
