@@ -13,6 +13,7 @@ namespace Project_Obsidian_UWP.Core
         public async static Task ReadAllCategories(StorageFolder rootFolder)
         {
             StorageFolder cateFolder = await rootFolder.GetFolderAsync(Constants.categoriesPath);
+
             if (cateFolder != null)
             {
                 IReadOnlyList<StorageFile> storageFiles = await cateFolder.GetFilesAsync();
@@ -31,8 +32,19 @@ namespace Project_Obsidian_UWP.Core
                                                      (string)children[new YamlScalarNode(Constants.slugKeyword)],
                                                      (string)children[new YamlScalarNode(Constants.descriptionKeyword)],
                                                      file.Path, content: splitedContent.Item2);
-                    Core.categoryList.AddCategory(category);
+                    Core.categoryList.AddCategoryCollection(category);
                 }
+            }
+        }
+
+        public async static Task ReadAllPosts(StorageFolder rootFolder)
+        {
+            StorageFolder postsFolder = await rootFolder.GetFolderAsync(Constants.postsPath);
+
+            foreach (Category category in Core.categoryList.GetCategoriesCollection())
+            {
+                StorageFolder categoryFolder = await postsFolder.GetFolderAsync(category.slug);
+
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using static Project_Obsidian_UWP.Utilities.Enumerations;
-using static Project_Obsidian_UWP.Utilities.Utility;
 
 namespace Project_Obsidian_UWP.Models
 {
@@ -42,29 +41,45 @@ namespace Project_Obsidian_UWP.Models
 
     public class CategoryManager
     {
-        private ObservableCollection<Category> _categories = new ObservableCollection<Category>();
+        private List<Category> _categoryList = new List<Category>();
+        private ObservableCollection<Category> _categoryCollection = new ObservableCollection<Category>();
 
-        public void AddCategory(Category category)
+        public void AddCategoryCollection(Category category)
         {
-            _categories.Add(category);
+            _categoryCollection.Add(category);
         }
 
-        public void AddCategories(List<Category> categories)
+        public void AddCategoryList(Category category)
+        {
+            _categoryList.Add(category);
+        }
+
+        public void AddCategoriesCollection(List<Category> categories)
         {
             foreach (Category category in categories)
             {
-                _categories.Add(category);
+                _categoryCollection.Add(category);
             }
         }
 
-        public ObservableCollection<Category> GetCategories()
+        public void AddCategoriesList(List<Category> categories)
         {
-            return _categories;
+            _categoryList.AddRange(categories);
+        }
+
+        public ObservableCollection<Category> GetCategoriesCollection()
+        {
+            return _categoryCollection;
+        }
+
+        public List<Category> GetCategoriesList()
+        {
+            return _categoryList;
         }
 
         public void MoveCategory(int oldIndex, int newIndex)
         {
-            _categories.Move(oldIndex, newIndex);
+            _categoryCollection.Move(oldIndex, newIndex);
         }
     }
 }
