@@ -72,6 +72,16 @@ namespace Project_Obsidian_UWP.Core
             }
         }
 
+        public async static Task ReadAllPages(StorageFolder rootFolder)
+        {
+            StorageFolder pagesFolder = await rootFolder.GetFolderAsync(Constants.pagesPath);
+
+            foreach (StorageFile pageFile in await pagesFolder.GetFilesAsync())
+            {
+
+            }
+        }
+
         private static bool isLayoutValid(StorageFile file, IDictionary<YamlNode, YamlNode> children)
         {
             if ((string)children[new YamlScalarNode(Constants.layoutKeyword)] != 

@@ -10,6 +10,7 @@
 
         #region Constants for file or folder path
         public const string categoriesPath = @"_featured_categories";
+        public const string pagesPath = @"pages";
         public const string postsPath = @"posts";
         public const string subpostPath = @"_posts";
         public const string assetsPath = @"assets";

@@ -15,10 +15,10 @@ namespace Project_Obsidian_UWP.Core
         {
             StorageFolder pickedFolder = await Picker.PickFolder();
 
-            await Loader.ReadAllCategories(pickedFolder);
-            await Loader.ReadAllPosts(pickedFolder);
+            //await Loader.ReadAllCategories(pickedFolder);
+            //await Loader.ReadAllPosts(pickedFolder);
 
-            var test = Core.categoryManager.GetCategoriesCollection();
+            //var test = Core.categoryManager.GetCategoriesCollection();
 
             if (pickedFolder != null)
             {

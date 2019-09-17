@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
+using static Project_Obsidian_UWP.Utilities.Enumerations;
 
 namespace Project_Obsidian_UWP.Utilities
 {
@@ -44,6 +45,21 @@ namespace Project_Obsidian_UWP.Utilities
 
             return (string.Join("\r\n", lines.GetRange(0, index + 1)), 
                     string.Join("\r\n", lines.GetRange(index + 1, lines.Count() - index - 1)));
+        }
+
+        public static PageLayout StrToPageLayout(string str)
+        {
+            switch (str)
+            {
+                case "page":
+                    return PageLayout.Page;
+
+                case "not-found":
+                    return PageLayout.NotFound;
+
+                default:
+                    return PageLayout.Page;
+            }
         }
     }
 }
