@@ -78,7 +78,23 @@ namespace Project_Obsidian_UWP.Core
 
             foreach (StorageFile pageFile in await pagesFolder.GetFilesAsync())
             {
+                var splitedContent = await Utility.SplitYamlFrontMatter(pageFile);
+                IDictionary<YamlNode, YamlNode> children = Parser.ParseYamlFront(splitedContent.Item1).Children;
 
+                string title = (string)children[new YamlScalarNode(Constants.titleKeyword)];
+                string description = (string)children[new YamlScalarNode(Constants.descriptionKeyword)];
+                string layout = (string)children[new YamlScalarNode(Constants.layoutKeyword)];
+                string permalink = (string)children[new YamlScalarNode(Constants.permalinkKeyword)];
+
+                Page page = new Page(layout, 
+                                     permalink, 
+                                     pageFile.DisplayName, 
+                                     pageFile.FileType,
+                                     title, 
+                                     description, 
+                                     splitedContent.Item2);
+
+                Core.pageManager.AddPageCollection(page);
             }
         }
 

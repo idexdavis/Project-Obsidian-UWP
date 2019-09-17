@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,50 @@ namespace Project_Obsidian_UWP.Models
             this.title = title;
             this.description = description;
             this.content = content;
+        }
+    }
+
+    public class PageManager
+    {
+        private List<Page> _pageList = new List<Page>();
+        private ObservableCollection<Page> _pageCollection = new ObservableCollection<Page>();
+
+        public void AddPageCollection(Page page)
+        {
+            _pageCollection.Add(page);
+        }
+
+        public void AddPageList(Page page)
+        {
+            _pageList.Add(page);
+        }
+
+        public void AddPagesCollection(List<Page> pages)
+        {
+            foreach (Page page in pages)
+            {
+                _pageCollection.Add(page);
+            }
+        }
+
+        public void AddPagesList(List<Page> pages)
+        {
+            _pageList.AddRange(pages);
+        }
+
+        public ObservableCollection<Page> GetPagesCollection()
+        {
+            return _pageCollection;
+        }
+
+        public List<Page> GetPagesList()
+        {
+            return _pageList;
+        }
+
+        public void MovePage(int oldIndex, int newIndex)
+        {
+            _pageCollection.Move(oldIndex, newIndex);
         }
     }
 }
