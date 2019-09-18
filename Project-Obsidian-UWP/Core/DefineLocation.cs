@@ -22,6 +22,7 @@ namespace Project_Obsidian_UWP.Core
 
             if (pickedFolder != null)
             {
+                Core.rootFolder = pickedFolder;
                 return await CheckConfigFile(pickedFolder);
             }
             return false;

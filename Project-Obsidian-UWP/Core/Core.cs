@@ -11,5 +11,6 @@ namespace Project_Obsidian_UWP.Core
     {
         public static CategoryManager categoryManager = new CategoryManager();
         public static PageManager pageManager = new PageManager();
+        public static Windows.Storage.StorageFolder rootFolder { get; set; }
     }
 }
