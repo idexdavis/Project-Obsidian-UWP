@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:Project_Obsidian_UWP.ViewModels"
     xmlns:model="using:Project_Obsidian_UWP.Models"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -15,38 +16,47 @@
     </Page.DataContext>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Margin="10" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="{x:Bind ViewModel.category.title, Mode=OneWay}" 
+        <ListView>
+            <ListView.Header>
+                <controls:ScrollHeader Mode="QuickReturn">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="{x:Bind ViewModel.category.title, Mode=OneWay}" 
                            Margin="0, 0, 0, 5"
                            FontSize="25"
                            TextWrapping="Wrap"
                            TextTrimming="CharacterEllipsis"
                            FontWeight="Bold"/>
-                <TextBlock Text="{x:Bind ViewModel.category.description, Mode=OneWay}"
+                        <TextBlock Text="{x:Bind ViewModel.category.description, Mode=OneWay}"
                            TextWrapping="Wrap"
                            TextTrimming="CharacterEllipsis"
                            FontSize="15"/>
-                
-            </StackPanel>
+                    </StackPanel>
+                </controls:ScrollHeader>
+            </ListView.Header>
 
-            <!--<Grid Grid.Column="1" Margin="10" HorizontalAlignment="Right">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Slug:" Margin="0, 0, 5, 0" FontSize="15"/>
-                    <TextBlock Text="{x:Bind ViewModel.category.slug, Mode=OneWay}" FontSize="15"/>
-                </StackPanel>
-            </Grid>-->
-            
-        </Grid>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Post">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid VerticalAlignment="Center">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{x:Bind title, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind description, Mode=OneWay}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
