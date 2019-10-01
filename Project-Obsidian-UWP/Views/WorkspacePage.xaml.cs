@@ -51,5 +51,11 @@ namespace Project_Obsidian_UWP.Views
             }
             await Loader.ReadAllCategories(Core.Core.rootFolder);
         }
+
+        private void CategoryListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedCategory = CategoryListView.SelectedItem;
+            DetailFrame.Navigate(typeof(WorkspaceDetailPage), selectedCategory);
+        }
     }
 }

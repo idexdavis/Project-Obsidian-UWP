@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:Project_Obsidian_UWP.ViewModels"
+    xmlns:model="using:Project_Obsidian_UWP.Models"
+    xmlns:fa5="using:FontAwesome5.UWP"
     mc:Ignorable="d" Loading="Page_Loading"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -26,19 +28,53 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0">
-                <TextBlock Text="Categories" FontWeight="Bold" FontSize="20"/>
+                <ListViewHeaderItem>
+                    <ListViewHeaderItem.Content>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <fa5:FontAwesome Icon="Solid_ThList" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 10, -5"/>
+                            <TextBlock Text="Categories" FontSize="20" FontWeight="Bold" TextLineBounds="Full"/>
+                        </StackPanel>
+                    </ListViewHeaderItem.Content>
+                </ListViewHeaderItem>
+
                 <ListView x:Name="CategoryListView"
                           ItemsSource="{x:Bind ViewModel.categories, Mode=OneWay}"
-                          Loading="CategoryListView_Loading">
-                    
+                          Loading="CategoryListView_Loading"
+                          SelectionChanged="CategoryListView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Category">
+                            <Grid Margin="0, 10, 0, 10">
+                                <StackPanel>
+                                    <TextBlock Text="{x:Bind title}" 
+                                               FontWeight="Bold"
+                                               Margin="0, 0, 0, 5"
+                                               TextWrapping="Wrap"
+                                               MaxLines="2"
+                                               TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock Text="{x:Bind description}"
+                                               TextWrapping="Wrap" 
+                                               MaxLines="2" 
+                                               FontWeight="Light"
+                                               TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
 
             <StackPanel Grid.Row="1">
-                <TextBlock Text="Pages" FontWeight="Bold" FontSize="20"/>
+                <ListViewHeaderItem Content="Pages" FontSize="20" FontWeight="Bold"/>
             </StackPanel>
-            
         </Grid>
-        
+
+        <Frame x:Name="DetailFrame" Grid.Column="1">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <ContentThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+
     </Grid>
 </Page>

@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="Project_Obsidian_UWP.Views.WorkspaceDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Project_Obsidian_UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Project_Obsidian_UWP.ViewModels"
+    xmlns:model="using:Project_Obsidian_UWP.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:WorkspaceDetailViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="10" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="{x:Bind ViewModel.category.title, Mode=OneWay}" 
+                           Margin="0, 0, 0, 5"
+                           FontSize="25"
+                           TextWrapping="Wrap"
+                           TextTrimming="CharacterEllipsis"
+                           FontWeight="Bold"/>
+                <TextBlock Text="{x:Bind ViewModel.category.description, Mode=OneWay}"
+                           TextWrapping="Wrap"
+                           TextTrimming="CharacterEllipsis"
+                           FontSize="15"/>
+                
+            </StackPanel>
+
+            <!--<Grid Grid.Column="1" Margin="10" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Slug:" Margin="0, 0, 5, 0" FontSize="15"/>
+                    <TextBlock Text="{x:Bind ViewModel.category.slug, Mode=OneWay}" FontSize="15"/>
+                </StackPanel>
+            </Grid>-->
+            
+        </Grid>
+    </Grid>
+</Page>
