@@ -9,18 +9,24 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel>
-            <NavigationView x:Name="MainNaviView" PaneDisplayMode="Top"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <NavigationView x:Name="MainNaviView" PaneDisplayMode="Top"
                         ItemInvoked="MainNaviView_ItemInvoked"
                         SelectedItem="{x:Bind WorkspaceNaviItem}"
                         Loaded="MainNaviView_Loaded"
                         IsBackButtonVisible="Collapsed">
-                <NavigationView.MenuItems>
-                    <NavigationViewItem x:Name="WorkspaceNaviItem" Content="Workspace" Tag="Workspace"/>
-                </NavigationView.MenuItems>
-            </NavigationView>
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="WorkspaceNaviItem" Content="Workspace" Tag="Workspace"/>
+            </NavigationView.MenuItems>
+        </NavigationView>
 
-            <Frame x:Name="MainFrame" IsNavigationStackEnabled="False"/>
-        </StackPanel>
+        <Frame x:Name="MainFrame"
+               Grid.Row="1"
+               IsNavigationStackEnabled="False"/>
+
     </Grid>
 </Page>
