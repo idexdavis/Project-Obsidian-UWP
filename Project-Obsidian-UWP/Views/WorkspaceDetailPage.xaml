@@ -15,11 +15,11 @@
         <vm:WorkspaceDetailViewModel/>
     </Page.DataContext>
 
-    <Grid>
-        <ListView>
+    
+        <ListView ItemsSource="{x:Bind ViewModel.posts, Mode=OneWay}">
             <ListView.Header>
                 <controls:ScrollHeader Mode="QuickReturn">
-                    <StackPanel VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" Margin="10">
                         <TextBlock Text="{x:Bind ViewModel.category.title, Mode=OneWay}" 
                            Margin="0, 0, 0, 5"
                            FontSize="25"
@@ -34,11 +34,12 @@
                 </controls:ScrollHeader>
             </ListView.Header>
 
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="10"/>
+                </Style>
+            </ListView.ItemContainerStyle>
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Post">
@@ -48,15 +49,37 @@
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid VerticalAlignment="Center">
+                        <Grid Margin="0, 0, 20, 0" VerticalAlignment="Center">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                <TextBlock Text="{x:Bind title}"
+                                           Margin="0, 0, 0, 5"
+                                           TextWrapping="Wrap"
+                                           MaxLines="2"
+                                           FontWeight="Bold"
+                                           FontSize="17"/>
+                                <TextBlock Text="{x:Bind description}"
+                                           MaxLines="3"
+                                           TextWrapping="Wrap"
+                                           TextTrimming="CharacterEllipsis"
+                                           FontSize="14"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Column="1" VerticalAlignment="Center">
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{x:Bind title, Mode=OneWay}"/>
-                                <TextBlock Text="{x:Bind description, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind fileName}" Margin="0, 0, 0, 5"
+                                           HorizontalAlignment="Right"
+                                           FontWeight="SemiLight"
+                                           FontSize="14"/>
+                                <TextBlock Text="{x:Bind publishDate.ToShortDateString()}"
+                                           HorizontalAlignment="Right"
+                                           FontWeight="SemiLight"
+                                           FontSize="14"/>
                             </StackPanel>
                         </Grid>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </Grid>
+    
 </Page>

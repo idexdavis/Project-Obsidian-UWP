@@ -50,6 +50,7 @@ namespace Project_Obsidian_UWP.Views
                 await Task.Delay(25);
             }
             await Loader.ReadAllCategories(Core.Core.rootFolder);
+            await Loader.ReadAllPosts(Core.Core.rootFolder);
         }
 
         private void CategoryListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
