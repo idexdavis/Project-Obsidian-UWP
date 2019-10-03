@@ -15,11 +15,23 @@
         <vm:WorkspaceDetailViewModel/>
     </Page.DataContext>
 
-    
-        <ListView ItemsSource="{x:Bind ViewModel.posts, Mode=OneWay}">
+    <Grid>
+        <ParallaxView Source="{Binding ElementName=PostsListView}" VerticalShift="500">
+            <Image Source="ms-appx:///Assets/bg-test.jpg" Stretch="UniformToFill"/>
+        </ParallaxView>
+
+        <ListView x:Name="PostsListView"
+                  ItemsSource="{x:Bind ViewModel.posts, Mode=OneWay}">
             <ListView.Header>
+                <Grid>
+                <ParallaxView Source="{x:Bind PostsListView}" VerticalShift="100"
+                              VerticalSourceOffsetKind="Absolute" VerticalSourceStartOffset="-50"
+                              VerticalSourceEndOffset="250">
+                    <Image Source="ms-appx:///Assets/bg-test.jpg" Stretch="UniformToFill"/>
+                </ParallaxView>
+
                 <controls:ScrollHeader Mode="QuickReturn">
-                    <StackPanel VerticalAlignment="Center" Margin="10">
+                    <StackPanel VerticalAlignment="Center" Padding="10" Background="{ThemeResource Acrylic02}">
                         <TextBlock Text="{x:Bind ViewModel.category.title, Mode=OneWay}" 
                            Margin="0, 0, 0, 5"
                            FontSize="25"
@@ -32,6 +44,7 @@
                            FontSize="15"/>
                     </StackPanel>
                 </controls:ScrollHeader>
+                </Grid>
             </ListView.Header>
 
             <ListView.ItemContainerStyle>
@@ -81,5 +94,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    
+
+    </Grid>
+
 </Page>

@@ -2,5 +2,53 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Project_Obsidian_UWP.XamlResource">
-    
+
+    <AcrylicBrush x:Key="AcrylicHost01"
+                  BackgroundSource="HostBackdrop"
+                  TintColor="White"
+                  TintOpacity="0.8"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="AcrylicHost02"
+                  BackgroundSource="HostBackdrop"
+                  TintColor="White"
+                  TintOpacity="0.6"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="AcrylicHost03"
+                  BackgroundSource="HostBackdrop"
+                  TintColor="White"
+                  TintOpacity="0.4"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="AcrylicHost04"
+                  BackgroundSource="HostBackdrop"
+                  TintColor="White"
+                  TintOpacity="0.2"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="Acrylic01"
+                  BackgroundSource="Backdrop"
+                  TintColor="White"
+                  TintOpacity="0.8"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="Acrylic02"
+                  BackgroundSource="Backdrop"
+                  TintColor="White"
+                  TintOpacity="0.6"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="Acrylic03"
+                  BackgroundSource="Backdrop"
+                  TintColor="White"
+                  TintOpacity="0.4"
+                  FallbackColor="White"/>
+
+    <AcrylicBrush x:Key="Acrylic04"
+                  BackgroundSource="Backdrop"
+                  TintColor="White"
+                  TintOpacity="0.2"
+                  FallbackColor="White"/>
+
 </ResourceDictionary>
