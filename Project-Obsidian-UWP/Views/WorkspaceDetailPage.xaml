@@ -16,22 +16,24 @@
     </Page.DataContext>
 
     <Grid>
-        <ParallaxView Source="{Binding ElementName=PostsListView}" VerticalShift="500">
+        <ParallaxView Source="{x:Bind PostsListView}" 
+                      VerticalShift="100"
+                      VerticalSourceOffsetKind="Absolute" 
+                      VerticalSourceStartOffset="-50"
+                      VerticalSourceEndOffset="250">
             <Image Source="ms-appx:///Assets/bg-test.jpg" Stretch="UniformToFill"/>
         </ParallaxView>
+
+        <Rectangle Fill="Black" Opacity="0.7"/>
 
         <ListView x:Name="PostsListView"
                   ItemsSource="{x:Bind ViewModel.posts, Mode=OneWay}">
             <ListView.Header>
                 <Grid>
-                <ParallaxView Source="{x:Bind PostsListView}" VerticalShift="100"
-                              VerticalSourceOffsetKind="Absolute" VerticalSourceStartOffset="-50"
-                              VerticalSourceEndOffset="250">
-                    <Image Source="ms-appx:///Assets/bg-test.jpg" Stretch="UniformToFill"/>
-                </ParallaxView>
-
-                <controls:ScrollHeader Mode="QuickReturn">
-                    <StackPanel VerticalAlignment="Center" Padding="10" Background="{ThemeResource Acrylic02}">
+                    <controls:ScrollHeader Mode="QuickReturn">
+                        <StackPanel VerticalAlignment="Center"
+                                    Padding="15, 15, 20, 15" 
+                                    Background="{ThemeResource Acrylic02}">
                         <TextBlock Text="{x:Bind ViewModel.category.title, Mode=OneWay}" 
                            Margin="0, 0, 0, 5"
                            FontSize="25"
@@ -50,7 +52,7 @@
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="Padding" Value="15, 15, 20, 15"/>
                 </Style>
             </ListView.ItemContainerStyle>
 
