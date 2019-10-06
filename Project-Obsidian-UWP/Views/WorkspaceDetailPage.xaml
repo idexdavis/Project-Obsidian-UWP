@@ -27,25 +27,27 @@
         <Rectangle Fill="Black" Opacity="0.7"/>
 
         <ListView x:Name="PostsListView"
-                  ItemsSource="{x:Bind ViewModel.posts, Mode=OneWay}">
+                  ItemsSource="{x:Bind ViewModel.posts, Mode=OneWay}"
+                  SelectionMode="Single"
+                  SelectionChanged="PostsListView_SelectionChanged">
             <ListView.Header>
                 <Grid>
                     <controls:ScrollHeader Mode="QuickReturn">
                         <StackPanel VerticalAlignment="Center"
                                     Padding="15, 15, 20, 15" 
                                     Background="{ThemeResource Acrylic02}">
-                        <TextBlock Text="{x:Bind ViewModel.category.title, Mode=OneWay}" 
-                           Margin="0, 0, 0, 5"
-                           FontSize="25"
-                           TextWrapping="Wrap"
-                           TextTrimming="CharacterEllipsis"
-                           FontWeight="Bold"/>
-                        <TextBlock Text="{x:Bind ViewModel.category.description, Mode=OneWay}"
-                           TextWrapping="Wrap"
-                           TextTrimming="CharacterEllipsis"
-                           FontSize="15"/>
-                    </StackPanel>
-                </controls:ScrollHeader>
+                            <TextBlock Text="{x:Bind ViewModel.category.title, Mode=OneWay}" 
+                                       Margin="0, 0, 0, 5"
+                                       FontSize="25"
+                                       TextWrapping="Wrap"
+                                       TextTrimming="CharacterEllipsis"
+                                       FontWeight="Bold"/>
+                            <TextBlock Text="{x:Bind ViewModel.category.description, Mode=OneWay}"
+                                       TextWrapping="Wrap"
+                                       TextTrimming="CharacterEllipsis"
+                                       FontSize="15"/>
+                        </StackPanel>
+                    </controls:ScrollHeader>
                 </Grid>
             </ListView.Header>
 
@@ -96,7 +98,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </Grid>
-
 </Page>

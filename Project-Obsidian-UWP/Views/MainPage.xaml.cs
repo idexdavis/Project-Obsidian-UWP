@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Project_Obsidian_UWP.Utilities;
+using Windows.UI.Xaml.Media.Animation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -29,11 +30,19 @@ namespace Project_Obsidian_UWP.Views
             this.InitializeComponent();
         }
 
+        private void WorkspaceDetailPage_OnNavigateMainReady(object source, EventArgs e)
+        {
+            FrameNavigationOptions navOptions = new FrameNavigationOptions();
+            navOptions.TransitionInfoOverride = .RecommendedNavigationTransitionInfo;
+            MainNaviView.SelectedItem = MainNaviView.MenuItems[1];
+            MainFrame.Navigate(typeof(EditPage), null, );
+        }
+
         private void MainNaviView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             FrameNavigationOptions navOptions = new FrameNavigationOptions();
             navOptions.TransitionInfoOverride = args.RecommendedNavigationTransitionInfo;
-            
+
             Type pageType;
             NavigationViewItem naviItem = sender.SelectedItem as NavigationViewItem;
 
@@ -49,6 +58,10 @@ namespace Project_Obsidian_UWP.Views
                         pageType = typeof(WorkspacePage);
                         break;
 
+                    case "Edit":
+                        pageType = typeof(EditPage);
+                        break;
+
                     default:
                         Console.WriteLine("No match navi item.");
                         return;
@@ -62,6 +75,16 @@ namespace Project_Obsidian_UWP.Views
         private void MainNaviView_Loaded(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(WorkspacePage));
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            WorkspaceDetailPage.OnNavigateMainReady += WorkspaceDetailPage_OnNavigateMainReady;
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            WorkspaceDetailPage.OnNavigateMainReady -= WorkspaceDetailPage_OnNavigateMainReady;
         }
     }
 }
